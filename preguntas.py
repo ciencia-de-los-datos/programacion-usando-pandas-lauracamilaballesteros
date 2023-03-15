@@ -78,8 +78,11 @@ def pregunta_04():
     D    3.833333
     E    4.785714
     Name: _c2, dtype: float64
+    
     """
-    return
+    #Realizar groupby para agrupar los datos de la columna y sacar la media de la columna 2
+    result = tbl0.groupby("_c1")["_c2"].mean()
+    return result
 
 
 def pregunta_05():
