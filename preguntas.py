@@ -16,13 +16,18 @@ tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
 
 def pregunta_01():
     """
+    
     ¿Cuál es la cantidad de filas en la tabla `tbl0.tsv`?
 
     Rta/
     40
 
     """
-    return
+    
+    #Se necesita ver la cantidad de filas
+    row_table0 = tbl0.shape[0]
+    
+    return row_table0
 
 
 def pregunta_02():
@@ -33,7 +38,11 @@ def pregunta_02():
     4
 
     """
-    return
+    #Se necesita ver la cantidad de columnas
+    column_table0 = tbl0.shape[1]
+    
+
+    return column_table0
 
 
 def pregunta_03():
@@ -50,7 +59,12 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    #Agrupando los datos y contando sus registros
+    count_registers = tbl0.groupby("_c1")["_c1"].count()
+    
+    
+    
+    return count_registers
 
 
 def pregunta_04():
