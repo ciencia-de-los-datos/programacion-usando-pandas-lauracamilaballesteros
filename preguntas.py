@@ -193,16 +193,12 @@ def pregunta_10():
     
     """
     # agrupar por _c1 y unir los valores de _c2 separados por ':'
-    grouped = tbl0.groupby('_c0').apply(lambda x: ':'.join(sorted(x['_c2'].astype(str))))
-    
-    # resetear los índices de la tabla resultante
-    grouped = grouped.reset_index()
+    grouped = tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(map(str,sorted(list(x)))))
 
-    # renombrar las columnas de la tabla resultante
-    grouped.columns = ['_c0', '_c1']
+    result = pd.DataFrame(grouped)
 
 
-    return grouped
+    return result
 
 
 def pregunta_11():
@@ -277,4 +273,10 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    
+        # unir ambos dataframes por la columna _c0
+    merged = pd.merge(tbl0, tbl2, on='_c0')
+
+    # agrupar los valores resultantes por la columna _c1 y sumar los valores de _c5b
+    result = merged.groupby('_c1')['_c5b'].sum()
+    return result
